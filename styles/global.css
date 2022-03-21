@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-secondary-color: theme("colors.sky.50");
+  }
+
+  :root.dark {
+    --bg-secondary-color: theme("colors.slate.900");
+  }
+
+  body {
+    background-color: var(--bg-secondary-color);
+  }
+}

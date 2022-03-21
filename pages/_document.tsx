@@ -6,9 +6,7 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html>
-        <Head>
-          <script></script>
-        </Head>
+        <Head></Head>
         <body className="dark:bg-black dark:text-white mx-auto max-w-3xl">
           <Main />
           <NextScript />

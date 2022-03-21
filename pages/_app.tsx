@@ -1,33 +1,29 @@
-// import "../styles/globals.css";
-import "tailwindcss/tailwind.css";
+import "../styles/global.css";
 
-import Head from "next/head";
 import { AppProps } from "next/app";
 import * as React from "react";
 
-import { getTheme, updateTheme } from "../src/utils/theme";
-
 function MyApp({ Component, pageProps }: AppProps) {
-  React.useEffect(() => {
-    updateTheme(getTheme());
-  }, []);
-
   return (
     <>
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-74904849-1"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments)}
-gtag("js", new Date());
-gtag("config", "UA-74904849-1");`,
-          }}
-        />
-      </Head>
+      <script
+        id="theme"
+        dangerouslySetInnerHTML={{
+          __html:
+            "let t = localStorage.getItem('theme');if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {document.documentElement.classList.add('dark');}",
+        }}
+      />
+      <script
+        async
+        defer
+        src="https://www.googletagmanager.com/gtag/js?id=UA-74904849-1"
+      />
+      <script
+        defer
+        dangerouslySetInnerHTML={{
+          __html: `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments)}gtag("js", new Date());gtag("config", "UA-74904849-1");`,
+        }}
+      />
       <Component {...pageProps} />
     </>
   );
