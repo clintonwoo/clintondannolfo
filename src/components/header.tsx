@@ -15,7 +15,7 @@ export function Header(): JSX.Element {
   }, []);
 
   return (
-    <header className="flex justify-between px-8">
+    <header className="flex justify-between">
       <div className="flex">
         <Link href="/">
           <a className="animate-pulse dark:hover:bg-gray-700 flex font-bold hover:bg-gray-100 items-center p-4">

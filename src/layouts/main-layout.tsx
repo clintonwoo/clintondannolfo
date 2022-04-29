@@ -4,7 +4,7 @@ import { Header } from "../components/header";
 import { SocialFooter } from "../components/social-footer";
 
 export interface IMainLayoutProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 

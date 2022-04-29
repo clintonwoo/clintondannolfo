@@ -4,14 +4,292 @@
 
 @layer base {
   :root {
-    --bg-secondary-color: theme("colors.sky.50");
+    --bg-primary-color: theme('colors.white');
+    --bg-secondary-color: theme('colors.sky.50');
+    --bg-tertiary-color: theme('colors.slate.50');
+
+    --border-primary-color: theme('colors.stone.200');
+
+    --focus-ring-color: theme('colors.stone.900');
+
+    --link-primary-color: theme('colors.sky.600');
+    --link-secondary-color: theme('colors.sky.500');
+
+    --text-primary-color: theme('colors.stone.900');
+    --text-primary-light-color: theme('colors.stone.100');
+    --text-primary-dark-color: theme('colors.stone.900');
+    --text-secondary-color: theme('colors.stone.400');
   }
 
   :root.dark {
-    --bg-secondary-color: theme("colors.slate.900");
+    --bg-primary-color: theme('colors.slate.800');
+    --bg-secondary-color: theme('colors.slate.900');
+    --bg-tertiary-color: theme('colors.slate.700');
+
+    --border-primary-color: theme('colors.slate.700');
+
+    --focus-ring-color: theme('colors.stone.700');
+
+    --link-primary-color: theme('colors.sky.500');
+    --link-secondary-color: theme('colors.sky.600');
+
+    --text-primary-color: theme('colors.stone.100');
+    --text-primary-light-color: theme('colors.stone.100');
+    --text-primary-dark-color: theme('colors.stone.900');
+    --text-secondary-color: theme('colors.stone.400');
+  }
+
+  a {
+    color: var(--link-primary-color);
+    fill: var(--link-primary-color);
+    @apply rounded-md underline-offset-1;
+  }
+  a:hover {
+    @apply opacity-80 underline;
+  }
+
+  article {
+    @apply text-base;
   }
 
   body {
+    color: var(--text-primary-color);
     background-color: var(--bg-secondary-color);
+  }
+
+  blockquote {
+    background-color: var(--bg-tertiary-color);
+    quotes: initial;
+    @apply border-l-4 border-slate-500 font-serif leading-loose my-2 p-4;
+  }
+  blockquote p {
+    display: inline;
+  }
+  blockquote:before {
+    /* color: #ccc; */
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  blockquote:after {
+    /* color: #ccc; */
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  button {
+    @apply p-2 rounded-md disabled:cursor-not-allowed disabled:opacity-70;
+  }
+
+  code {
+    background-color: var(--bg-tertiary-color);
+    @apply font-mono p-1;
+  }
+
+  h1 {
+    @apply font-medium pb-2 pt-4 text-2xl;
+  }
+  h2 {
+    @apply font-medium pb-2 pt-2 text-xl;
+  }
+  h3 {
+    @apply font-medium pb-1 pt-2 text-lg;
+  }
+  h4 {
+    @apply font-medium pb-1 pt-2 text-sm;
+  }
+
+  html {
+    /* @apply; */
+  }
+
+  input {
+    @apply border-2 p-1 rounded-md;
+  }
+  input:required {
+    @apply valid:border-green-200 invalid:border-red-200 dark:valid:border-green-400 dark:invalid:border-red-400;
+  }
+  input.touched {
+    @apply valid:border-green-200 invalid:border-red-200 dark:valid:border-green-400 dark:invalid:border-red-400;
+  }
+
+  label {
+    @apply flex gap-2 items-center p-2;
+  }
+
+  li {
+    /* @apply p-1; */
+  }
+
+  main {
+    /* @apply p-4; */
+  }
+
+  mark {
+    @apply px-1;
+  }
+
+  menu {
+  }
+
+  ol {
+    @apply list-decimal list-inside p-2;
+  }
+
+  p {
+    @apply py-2;
+  }
+
+  pre {
+    background-color: var(--bg-tertiary-color);
+    @apply my-2 p-4 whitespace-pre;
+  }
+
+  select {
+    @apply border-2 p-1 rounded-md;
+  }
+
+  svg {
+    @apply inline;
+  }
+
+  table {
+    @apply my-2;
+  }
+  td {
+    @apply border p-2;
+  }
+  th {
+    @apply border p-2;
+  }
+
+  ul {
+    @apply list-disc list-inside p-2;
+  }
+
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: var(--text-primary-dark-color);
+    fill: var(--text-primary-dark-color);
+    border-color: var(--border-primary-color);
+    @apply bg-white;
+  }
+
+  input:disabled,
+  optgroup:disabled,
+  select:disabled,
+  textarea:disabled {
+    color: var(--text-secondary-color);
+    fill: var(--text-secondary-color);
+    background-color: var(--bg-tertiary-color);
+    @apply cursor-not-allowed opacity-70;
+  }
+
+  ::placeholder {
+    color: var(--text-secondary-color);
+    fill: var(--text-secondary-color);
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    --tw-ring-color: var(--focus-ring-color);
+    @apply outline-none ring-2;
+  }
+  input:focus-visible,
+  optgroup:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    border-color: var(--focus-ring-color);
+    @apply border-slate-800;
+  }
+}
+
+@layer components {
+  .content-section {
+    @apply max-w-3xl mx-auto w-full;
+  }
+  .content-layout {
+    @apply px-4 py-8 my-4;
+  }
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: var(--bg-primary-color);
+  }
+  .bg-secondary {
+    background-color: var(--bg-secondary-color);
+  }
+  .bg-tertiary {
+    background-color: var(--bg-tertiary-color);
+  }
+
+  .border-primary {
+    border-color: var(--border-primary-color);
+  }
+
+  .emoji {
+    @apply inline-flex items-center justify-center not-italic w-6;
+    font-family: Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  }
+
+  .link-primary {
+    color: var(--link-primary-color);
+    fill: var(--link-primary-color);
+  }
+  .link-primary:hover {
+    color: var(--link-primary-hover-color);
+    fill: var(--link-primary-hover-color);
+  }
+  .link-secondary {
+    color: var(--link-secondary-color);
+    fill: var(--link-secondary-color);
+  }
+  .link-secondary:hover {
+    color: var(--link-secondary-hover-color);
+    fill: var(--link-secondary-hover-color);
+  }
+
+  .text-primary {
+    color: var(--text-primary-color);
+    fill: var(--text-primary-color);
+  }
+  .text-primary-dark {
+    color: var(--text-primary-dark-color);
+    fill: var(--text-primary-dark-color);
+  }
+  .text-primary-light {
+    color: var(--text-primary-light-color);
+    fill: var(--text-primary-light-color);
+  }
+  .text-secondary {
+    color: var(--text-secondary-color);
+    fill: var(--text-secondary-color);
+  }
+
+  .unstyled-link {
+    background-color: initial;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-align: inherit;
+    text-decoration: none;
+  }
+  .unstyled-link:hover {
+    @apply no-underline;
   }
 }

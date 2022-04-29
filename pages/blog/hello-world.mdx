@@ -1,0 +1,20 @@
+import { BlogPostLayout } from "../../src/layouts/blog-post-layout";
+
+export const meta = {
+  description:
+    "This is the launch of my new blog. I intend to post here when I want to share cool ideas, thoughts and experiences.",
+  publishDateIso: "2022-04-29",
+  slug: "hello-world",
+  //   thumbnail: "",
+  title: "Hello world - new blog launch!",
+};
+
+This is the launch of my new blog. I intend to post here when I want to share cool ideas, thoughts and experiences.
+
+For all the techies out there - the blog stack is using `Next.js` and `tailwindcss` hosted on Github Pages currently since it's a static site.
+
+I had a blog using Wordpress years ago, which was fine but now it's easier for me to write it myself :)
+
+export default ({ children }) => (
+  <BlogPostLayout meta={meta}>{children}</BlogPostLayout>
+);

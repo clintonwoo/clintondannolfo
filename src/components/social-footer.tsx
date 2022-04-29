@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithubSquare, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithubSquare,
+  faLinkedin,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import * as React from "react";
 import cn from "classnames";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
@@ -19,51 +23,47 @@ function handleEmail() {
 }
 
 interface ISocialFooterButtonProps {
-  backgroundColor: string;
   className?: string;
   href?: string;
   icon: IconProp;
   text: string;
-  textColor: string;
 }
 function SocialFooterButton(props: ISocialFooterButtonProps): JSX.Element {
-  const { backgroundColor, className, href, icon, text, textColor } = props;
+  const { className, href, icon, text } = props;
 
   return (
-    <a className={cn(className, "flex")} href={href}>
-      <button
-        className={`${backgroundColor} hover:shadow-lg md:flex-auto flex-1 p-2 rounded ${textColor}`}
-      >
-        <FontAwesomeIcon className="mr-2" height={22} icon={icon} />
-        {text}
-      </button>
+    <a className={cn(className, "flex items-center")} href={href}>
+      <FontAwesomeIcon className="mr-2" height={22} icon={icon} />
+      {text}
     </a>
   );
 }
 
 export function SocialFooter(): JSX.Element {
   return (
-    <footer className="px-8 py-4">
-      <h3 className="font-bold pb-2">Connect with me:</h3>
-      <section className="flex flex-col gap-4 md:flex-row">
+    <footer className="content-layout py-4">
+      <h3 className="font-bold pb-2 text-center">Connect with me:</h3>
+      <section className="flex flex-col items-center space-y-4">
         <SocialFooterButton
-          backgroundColor="bg-blue-600"
           className="md:basis-1/3"
           href="https://www.linkedin.com/in/clintondannolfo"
           icon={faLinkedin}
           text="LinkedIn"
-          textColor="text-white"
         />
         <SocialFooterButton
-          backgroundColor="bg-gray-800"
+          className="md:basis-1/3"
+          href="https://twitter.com/ClintonDAnnolfo"
+          icon={faTwitter}
+          text="Twitter"
+        />
+        <SocialFooterButton
           className="md:basis-1/3"
           href="https://github.com/clintonwoo"
           icon={faGithubSquare}
           text="GitHub"
-          textColor="text-white"
         />
         <button
-          className="bg-gray-400 flex-1 p-2 rounded text-white md:basis-1/3 md:flex-auto"
+          className="bg-gray-400 flex-auto p-2 px-4 rounded text-white md:flex-none"
           onClick={handleEmail}
         >
           📧 Email
