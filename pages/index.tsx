@@ -1,7 +1,8 @@
 import { GetStaticPropsContext } from "next";
 import * as React from "react";
-import { BlogSummaryCard } from "../src/components/blog-summary-card";
+import Head from "next/head";
 
+import { BlogSummaryCard } from "../src/components/blog-summary-card";
 import { Hero } from "../src/components/hero";
 import { MainLayout } from "../src/layouts/main-layout";
 import { blogPostSummaries, IBlogPostMeta } from "../src/utils/get-blog-posts";
@@ -18,6 +19,9 @@ export interface IHomePageProps {
 export function HomePage(): JSX.Element {
   return (
     <MainLayout>
+      <Head>
+        <title>Clinton D'Annolfo blog</title>
+      </Head>
       <Hero />
       <section className="content-layout">
         <h2>Blog posts</h2>

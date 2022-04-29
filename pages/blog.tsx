@@ -1,4 +1,5 @@
 import { GetStaticPropsContext } from "next";
+import Head from "next/head";
 import * as React from "react";
 
 import { BlogSummaryCard } from "../src/components/blog-summary-card";
@@ -21,6 +22,9 @@ export function BlogPage(props: IBlogPageProps): JSX.Element {
 
   return (
     <MainLayout className="content-layout py-4">
+      <Head>
+        <title>Blog | Clinton D'Annolfo</title>
+      </Head>
       <h1 className="font-bold pl-1 pb-2">Posts</h1>
       <div className="space-y-4">
         {blogPostSummaries.length > 0 ? (

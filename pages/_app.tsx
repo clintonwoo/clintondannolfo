@@ -2,10 +2,15 @@ import "../styles/global.css";
 
 import { AppProps } from "next/app";
 import * as React from "react";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Head>
+        <title>Clinton D'Annolfo</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <script
         id="theme"
         dangerouslySetInnerHTML={{
