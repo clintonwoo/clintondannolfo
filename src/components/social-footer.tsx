@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithubSquare, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import * as React from "react";
+import cn from "classnames";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 function handleEmail() {
@@ -19,25 +20,24 @@ function handleEmail() {
 
 interface ISocialFooterButtonProps {
   backgroundColor: string;
+  className?: string;
   href?: string;
   icon: IconProp;
   text: string;
   textColor: string;
 }
 function SocialFooterButton(props: ISocialFooterButtonProps): JSX.Element {
-  const { backgroundColor, href, icon, text, textColor } = props;
+  const { backgroundColor, className, href, icon, text, textColor } = props;
 
   return (
-    <li className="flex-1">
-      <a className="flex" href={href}>
-        <button
-          className={`${backgroundColor} hover:shadow-lg md:flex-auto flex-1 p-2 rounded ${textColor}`}
-        >
-          <FontAwesomeIcon className="mr-2" icon={icon} />
-          {text}
-        </button>
-      </a>
-    </li>
+    <a className={cn(className, "flex")} href={href}>
+      <button
+        className={`${backgroundColor} hover:shadow-lg md:flex-auto flex-1 p-2 rounded ${textColor}`}
+      >
+        <FontAwesomeIcon className="mr-2" height={22} icon={icon} />
+        {text}
+      </button>
+    </a>
   );
 }
 
@@ -45,9 +45,10 @@ export function SocialFooter(): JSX.Element {
   return (
     <footer className="px-8 py-4">
       <h3 className="font-bold pb-2">Connect with me:</h3>
-      <ul className="flex flex-col space-y-2">
+      <section className="flex flex-col gap-4 md:flex-row">
         <SocialFooterButton
           backgroundColor="bg-blue-600"
+          className="md:basis-1/3"
           href="https://www.linkedin.com/in/clintondannolfo"
           icon={faLinkedin}
           text="LinkedIn"
@@ -55,20 +56,19 @@ export function SocialFooter(): JSX.Element {
         />
         <SocialFooterButton
           backgroundColor="bg-gray-800"
+          className="md:basis-1/3"
           href="https://github.com/clintonwoo"
           icon={faGithubSquare}
           text="GitHub"
           textColor="text-white"
         />
-        <li className="flex flex-1">
-          <button
-            className="bg-gray-400 md:flex-auto flex-1 p-2 rounded text-white"
-            onClick={handleEmail}
-          >
-            Email
-          </button>
-        </li>
-      </ul>
+        <button
+          className="bg-gray-400 flex-1 p-2 rounded text-white md:basis-1/3 md:flex-auto"
+          onClick={handleEmail}
+        >
+          📧 Email
+        </button>
+      </section>
     </footer>
   );
 }
