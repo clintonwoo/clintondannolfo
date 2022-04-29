@@ -27,6 +27,8 @@ export function HomePage(): JSX.Element {
               <BlogSummaryCard
                 key={blogPost.slug}
                 description={blogPost.description}
+                nextPage={blogPost.nextPage}
+                nextPageTitle={blogPost.nextPageTitle}
                 publishDateIso={blogPost.publishDateIso}
                 slug={blogPost.slug}
                 thumbnail={blogPost.thumbnail}

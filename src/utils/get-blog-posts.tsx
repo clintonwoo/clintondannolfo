@@ -1,4 +1,4 @@
-import * as Blogg from "../../pages/blog/hello-world.mdx";
+import * as HelloWorldPost from "../../pages/blog/hello-world.mdx";
 
 enum Month {
   JAN = 0,
@@ -17,6 +17,8 @@ enum Month {
 
 export interface IBlogPostMeta {
   description: string;
+  nextPage: string | undefined;
+  nextPageTitle: string | undefined;
   publishDateIso: string;
   slug: string;
   thumbnail: string;
@@ -24,7 +26,7 @@ export interface IBlogPostMeta {
 }
 
 /** Blog posts in chronological order, newest first */
-export const blogPosts: IBlogPostMeta[] = [Blogg.meta];
+export const blogPosts: IBlogPostMeta[] = [HelloWorldPost.meta];
 
 export const blogPostMap = blogPosts.reduce<Map<string, IBlogPostMeta>>(
   (acc, curr) => {
